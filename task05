@@ -1,0 +1,51 @@
+#include <stdio.h>
+int main() {
+    int a[3][3], i, j;
+    int null=1, diag=1, upper=1, lower=1, id=1;
+
+    printf("Enter 9 elements:\n");
+    for(i=0;i<3;i++)
+        for(j=0;j<3;j++)
+            scanf("%d",&a[i][j]);
+
+    for(i=0;i<3;i++)
+        for(j=0;j<3;j++) {
+            if(a[i][j]!=0) null=0;
+            if(i!=j && a[i][j]!=0) diag=0;
+            if(i>j && a[i][j]!=0) upper=0;
+            if(i<j && a[i][j]!=0) lower=0;
+            if(i==j && a[i][j]!=1) id=0;
+            if(i!=j && a[i][j]!=0) id=0;
+        }
+
+    printf("Square Matrix\n");
+    if(null) 
+    printf("Null Matrix\n");
+    if(diag) 
+    printf("Diagonal Matrix\n");
+    if(upper) 
+    printf("Upper Triangular Matrix\n");
+    if(lower)
+    printf("Lower Triangular Matrix\n");
+    if(id)
+    printf("Identity Matrix\n");
+
+    printf("Diagonal: ");
+    for(i=0;i<3;i++) printf("%d ",a[i][i]);
+
+    printf("\nUpper Triangle:\n");
+    for(i=0;i<3;i++) {
+        for(j=0;j<3;j++)
+            if(i<=j) printf("%d ",a[i][j]);
+        printf("\n");
+    }
+
+    printf("Lower Triangle:\n");
+    for(i=0;i<3;i++) {
+        for(j=0;j<3;j++)
+            if(i>=j) printf("%d ",a[i][j]);
+        printf("\n");
+    }
+
+    return 0;
+}
